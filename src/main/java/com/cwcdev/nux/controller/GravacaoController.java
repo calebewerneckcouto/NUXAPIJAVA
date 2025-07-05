@@ -48,7 +48,6 @@ public class GravacaoController {
     }
 
 
-
     @GetMapping("/{slot}")
     public ResponseEntity<Gravacao> buscarPorSlot(@PathVariable int slot) {
         return service.buscarPorSlot(slot)
@@ -73,7 +72,6 @@ public class GravacaoController {
             @PageableDefault(size = 5, sort = "id") Pageable pageable) {
         return service.buscarPorTema(tema, pageable);
     }
-
 
 
     @DeleteMapping("/{id}")

@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 
 @Entity
 public class Gravacao {
@@ -16,14 +17,13 @@ public class Gravacao {
 
     private int numeroSlot; // número do pedal
     private String tema;    // exemplo: Base em C
-    private String assunto; // exemplo: Modo Jônio + Arpejo
+
+    @Lob
+    private String assunto; // texto longo: exemplo: explicação, modos, etc.
     
-    public Gravacao() {
-		
-	}
+    public Gravacao() {}
 
 	public Gravacao(Long id, int numeroSlot, String tema, String assunto) {
-		super();
 		this.id = id;
 		this.numeroSlot = numeroSlot;
 		this.tema = tema;
@@ -71,14 +71,9 @@ public class Gravacao {
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
+		if (obj == null || getClass() != obj.getClass())
 			return false;
 		Gravacao other = (Gravacao) obj;
 		return Objects.equals(id, other.id);
 	}
-    
-    
-    
 }
